@@ -1,0 +1,14 @@
+.pagination_box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.pagination_btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  cursor: pointer;
+}
+.pagination_counter {
+  font-size: 20px;
+}
