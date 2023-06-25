@@ -1,21 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLoginMutation } from "../features/auth/authApiSlice";
 import { setUser } from "../features/auth/authSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import useAuthRedirection from "../hooks/useAuthRedirection";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { user } = useSelector((state: any) => state.auth);
 
-  console.log(user, "user");
-
-  useEffect(() => {
-    if (user) {
-      navigate("/");
-    }
-  }, [user, navigate]);
+  useAuthRedirection();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

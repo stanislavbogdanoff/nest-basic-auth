@@ -1,19 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSignupMutation } from "../features/auth/authApiSlice";
 import { setUser } from "../features/auth/authSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import useAuthRedirection from "../hooks/useAuthRedirection";
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { user } = useSelector((state: any) => state.auth);
 
-  useEffect(() => {
-    if (user) {
-      navigate("/");
-    }
-  }, [user, navigate]);
+  useAuthRedirection();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
